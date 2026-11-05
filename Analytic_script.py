@@ -1,4 +1,4 @@
-iimport pandas as pd
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -19,6 +19,42 @@ print("=== QUESTION 1: DATA STRUCTURES & AVERAGES ===")
 print(f"Dataset Shape (Rows, Columns): {sales_df.shape}")
 print(f"Average Facebook Spend: ${sales_df['Ad_Spend_Facebook'].mean():.2f}")
 print(f"Average Instagram Spend: ${sales_df['Ad_Spend_Instagram'].mean():.2f}")
+
+
+
+
+print("=== QUESTION 2: DATA VISUALIZATION ===")
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.figure(figsize=(6, 4))
+sns.regplot(data=sales_df, x='Ad_Spend_Facebook', y='Sales', scatter_kws={'alpha':0.6}, line_kws={'color': 'red'})
+plt.title("Sales vs. Facebook Ad Spend")
+plt.xlabel("Facebook Ad Spend ($)")
+plt.ylabel("Units Sold")
+plt.grid(True)
+plt.savefig('facebook_vs_sales.png', bbox_inches='tight')
+plt.show()
+
+plt.figure(figsize=(6, 4))
+sns.regplot(data=sales_df, x='Ad_Spend_Instagram', y='Sales', scatter_kws={'alpha':0.6}, line_kws={'color': 'red'})
+plt.title("Sales vs. Instagram Ad Spend")
+plt.xlabel("Instagram Ad Spend ($)")
+plt.ylabel("Units Sold")
+plt.grid(True)
+plt.savefig('instagram_vs_sales.png', bbox_inches='tight')
+plt.show()
+
+plt.figure(figsize=(6, 4))
+sns.regplot(data=sales_df, x='Discount_Rate', y='Sales', scatter_kws={'alpha':0.6}, line_kws={'color': 'red'})
+plt.title("Sales vs. Discount Rate")
+plt.xlabel("Discount Rate (%)")
+plt.ylabel("Units Sold")
+plt.grid(True)
+plt.savefig('discount_rate_vs_sales.png', bbox_inches='tight')
+plt.show()
+
+
 
 print("=== QUESTION 3 & 4: SIMPLE LINEAR REGRESSION ===")
 X_simple = sm.add_constant(sales_df['Ad_Spend_Facebook'])
